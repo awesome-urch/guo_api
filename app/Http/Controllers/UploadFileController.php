@@ -27,13 +27,13 @@ class UploadFileController extends Controller {
 
         //print_r($request); die();
 
-        /*//Display File Name
+        //Display File Name
         echo 'File Name: '.$file->getClientOriginalName();
         echo '<br>';
 
         //Display File Extension
         echo 'File Extension: '.$file->getClientOriginalExtension();
-        echo '<br>';*/
+        echo '<br>';
 
         $extension = $file->getClientOriginalExtension();
 
@@ -48,9 +48,12 @@ class UploadFileController extends Controller {
         //Display File Mime Type
         echo 'File Mime Type: '.$file->getMimeType();
 
+
+        $bookDetailArray = explode(".",$file->getClientOriginalName());
+
         //Move Uploaded File
         $destinationPath = 'uploads';
-        $file->move($destinationPath,$file->getClientOriginalName());
+        $file->move($destinationPath,uniqid() . '_' . $bookDetailArray[0] . "." . $file->extension());
     }
 
     public function saveFile(Request $request){
