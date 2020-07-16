@@ -44,4 +44,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     //file
     $router->post('upload_book', ['uses' => 'UploadFileController@showUploadFile']);
 
+    $router->get('books',  ['uses' => 'BookController@showAllBooks']);
+
+    $router->get('books/{id}', ['uses' => 'BookController@showOneBook']);
+
+    //home page
+    $router->get('home_page', ['uses' => 'HomePageController@showBooksAndCategories']);
+
 });

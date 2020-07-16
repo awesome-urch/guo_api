@@ -2,24 +2,24 @@
 /**
  * Created by PhpStorm.
  * User: Awesome_Urch
- * Date: 6/28/2020
- * Time: 4:44 PM
+ * Date: 11/18/2019
+ * Time: 1:25 PM
  */
 
 namespace App;
 
-
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Book extends Model
 {
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'thumbnail'
+        'name', 'description', 'path'
     ];
 
     /**
@@ -32,8 +32,8 @@ class Category extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function books()
+    public function categories()
     {
-        return $this->belongsToMany(Book::class);
+        return $this->belongsToMany(Category::class);
     }
 }
